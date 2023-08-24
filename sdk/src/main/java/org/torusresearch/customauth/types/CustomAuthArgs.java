@@ -19,6 +19,8 @@ public class CustomAuthArgs {
         put(TorusNetwork.TESTNET, "https://signer.tor.us");
         put(TorusNetwork.CYAN, "https://signer-polygon.tor.us");
         put(TorusNetwork.AQUA, "https://signer-polygon.tor.us");
+        put(TorusNetwork.SAPPHIRE_MAINNET, "https://signer.tor.us");
+        put(TorusNetwork.SAPPHIRE_DEVNET, "https://signer.tor.us");
     }};
 
 
@@ -28,6 +30,7 @@ public class CustomAuthArgs {
     private TorusNetwork network;
     private boolean enableOneKey;
     private String networkUrl;
+    private String clientId;
 
 
     public CustomAuthArgs(String browserRedirectUri, TorusNetwork network, String _redirectUri) {
@@ -42,6 +45,13 @@ public class CustomAuthArgs {
 
     public CustomAuthArgs(String browserRedirectUri) {
         this(browserRedirectUri, TorusNetwork.MAINNET, "");
+    }
+
+    public CustomAuthArgs(String browserRedirectUri, TorusNetwork network, String _redirectUri, String clientId) {
+        this.redirectUri = _redirectUri;
+        this.network = network;
+        this.browserRedirectUri = browserRedirectUri;
+        this.clientId = clientId;
     }
 
     public String getRedirectUri() {
@@ -78,5 +88,13 @@ public class CustomAuthArgs {
 
     public void setNetworkUrl(String networkUrl) {
         this.networkUrl = networkUrl;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 }
